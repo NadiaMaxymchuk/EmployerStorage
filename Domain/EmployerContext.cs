@@ -32,15 +32,32 @@ namespace Domain
                 .HasKey(x => x.Id);
 
             modelBuilder.Entity<Company>()
+                .HasKey(x=>x.Id);
+
+            modelBuilder.Entity<City>()
+                .HasKey(x=>x.Id);
+
+            modelBuilder.Entity<Company>()
                 .HasMany(x => x.Employers)
                 .WithOne(x=>x.Company)
                 .HasForeignKey(x => x.CompanyId);
+
+            modelBuilder.Entity<Employer>()
+                .HasMany(x=>x.EmployerSkills)
+                .WithOne(x=>x.Employer)
+                .HasForeignKey(x=>x.EmployerId);
+
+            modelBuilder.Entity<Skill>()
+                .HasMany(x => x.EmployerSkills)
+                .WithOne(x => x.Skill)
+                .HasForeignKey(x => x.SkillId);
 
             modelBuilder.Entity<City>()
                 .HasMany(x => x.Companies)
                 .WithOne(x => x.City)
                 .HasForeignKey(x => x.CityId)
                 .OnDelete(DeleteBehavior.Cascade);
+
 
             modelBuilder.Entity<EmployerSkill>().HasKey(sc => new { sc.EmployerId, sc.SkillId });
         }

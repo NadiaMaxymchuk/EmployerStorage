@@ -30,6 +30,7 @@ namespace EmployerStorageAPI
             });
 
             services.AddTransient<IEmployerService, EmployerService>();
+            services.AddTransient<ISkillService, SkillService>();   
             services.AddSwaggerGen();
         }
 
