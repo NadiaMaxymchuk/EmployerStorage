@@ -14,5 +14,6 @@ namespace Domain.Models
         public virtual City City { get; set; }
 
         public virtual ICollection<Employer> Employers { get; set; }
+        public virtual ICollection<ClientCompany> ClientCompanies { get; set; }
     }
 }

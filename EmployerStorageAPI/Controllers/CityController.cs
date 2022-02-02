@@ -1,23 +1,26 @@
 ﻿using BLL.Interfaces;
 using Domain;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployerStorageAPI.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class CityController: ControllerBase
     {
-        private readonly IEmployerService employerService;
-        public CityController(IEmployerService employerService)
+        private readonly ICityService cityService;
+        public CityController(ICityService cityService)
         {
-            this.employerService = employerService;
+            this.cityService = cityService;
         }
 
         [HttpPost]
-        public void CreateEmployer(Employer employer)
+        public void CreateCity(City city )
         {
-            employerService.Add(employer);
+            cityService.Add(city);
 
-            employerService.SaveChanges();
+            cityService.SaveChanges();
         }
     }
 }

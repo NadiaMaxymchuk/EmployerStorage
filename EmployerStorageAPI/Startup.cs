@@ -22,15 +22,19 @@ namespace EmployerStorageAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-
+            services.AddControllers().AddNewtonsoftJson(x =>
+            x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); 
+       
             services.AddDbContext<EmployerContext>(options =>
             {
                 options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DBConnection"));
             });
 
             services.AddTransient<IEmployerService, EmployerService>();
-            services.AddTransient<ISkillService, SkillService>();   
+            services.AddTransient<ISkillService, SkillService>();
+            services.AddTransient<ICityService, CityService>();
+            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<IClientService, ClientService>();
             services.AddSwaggerGen();
         }
 

@@ -1,23 +1,27 @@
-﻿using BLL.Interfaces;
+﻿using BLL.Classes;
+using BLL.Interfaces;
 using Domain;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployerStorageAPI.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class CompanyController: ControllerBase
     {
-        private readonly IEmployerService employerService;
+        private readonly CompanyService companyService;
         public CompanyController(IEmployerService employerService)
         {
-            this.employerService = employerService;
+            this.companyService = companyService;
         }
 
         [HttpPost]
-        public void CreateEmployer(Employer employer)
+        public void CreateCompany(Company company)
         {
-            employerService.Add(employer);
+            companyService.Add(company);
 
-            employerService.SaveChanges();
+            companyService.SaveChanges();
         }
     }
 }

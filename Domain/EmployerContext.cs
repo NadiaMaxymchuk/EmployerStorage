@@ -37,6 +37,19 @@ namespace Domain
             modelBuilder.Entity<City>()
                 .HasKey(x=>x.Id);
 
+            modelBuilder.Entity<Client>()
+                .HasKey(x=>x.Id);
+
+            modelBuilder.Entity<Client>()
+                .HasMany(x => x.ClientCompanies)
+                .WithOne(x => x.Client)
+                .HasForeignKey(x => x.ClientId);
+
+            modelBuilder.Entity<Company>()
+                .HasMany(x => x.ClientCompanies)
+                .WithOne(x => x.Company)
+                .HasForeignKey(x => x.CompanyId);
+
             modelBuilder.Entity<Company>()
                 .HasMany(x => x.Employers)
                 .WithOne(x=>x.Company)
@@ -60,6 +73,7 @@ namespace Domain
 
 
             modelBuilder.Entity<EmployerSkill>().HasKey(sc => new { sc.EmployerId, sc.SkillId });
+            modelBuilder.Entity<ClientCompany>().HasKey(sc => new { sc.CompanyId, sc.ClientId });
         }
 
     }

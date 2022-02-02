@@ -1,11 +1,11 @@
-﻿using Domain;
+﻿using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BLL.Interfaces
 {
-    public interface IEmployerSkillService: IBaseService<Employer>
+    public interface IClientService: IBaseService<Client>
     {
     }
 }

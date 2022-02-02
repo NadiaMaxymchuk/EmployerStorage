@@ -1,15 +1,16 @@
 ﻿using BLL.Interfaces;
 using Domain;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BLL.Classes
 {
-    public class EmployerSkillService: BaseService<Employer>, IEmployerService
+    public class ClientService : BaseService<Client>, IClientService
     {
         private readonly EmployerContext context;
-        public EmployerSkillService(EmployerContext context) : base(context)
+        public ClientService(EmployerContext context) : base(context)
         {
         }
     }

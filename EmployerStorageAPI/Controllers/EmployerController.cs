@@ -1,6 +1,9 @@
 ﻿using BLL.Interfaces;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
+
 
 namespace EmployerStorageAPI.Controllers
 {
@@ -20,6 +23,14 @@ namespace EmployerStorageAPI.Controllers
             employerService.Add(employer);
 
             employerService.SaveChanges();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetFullInfo(Guid guid)
+        {
+             
+            var result = employerService.GetFullEmployerInfo(guid);
+            return Ok(result);
         }
     }
 }
