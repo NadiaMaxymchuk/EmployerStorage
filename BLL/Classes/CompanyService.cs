@@ -19,6 +19,7 @@ namespace BLL.Classes
         {
             return context.Companies.FirstOrDefault(x => x.Id == Id);
 
+
         }
 
         public IEnumerable<Company> GetAllCompany()

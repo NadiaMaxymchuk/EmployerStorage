@@ -19,6 +19,7 @@ namespace BLL.Classes
         {
             return context.Clients.FirstOrDefault(x => x.Id == Id);
 
+
         }
 
         public IEnumerable<Client> GetAllClient()
