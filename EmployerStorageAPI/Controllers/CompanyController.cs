@@ -10,8 +10,8 @@ namespace EmployerStorageAPI.Controllers
     [Route("[controller]")]
     public class CompanyController: ControllerBase
     {
-        private readonly CompanyService companyService;
-        public CompanyController(IEmployerService employerService)
+        private readonly ICompanyService companyService;
+        public CompanyController(ICompanyService companyService)
         {
             this.companyService = companyService;
         }

@@ -18,6 +18,7 @@ namespace EmployerStorageAPI.Controllers
         }
 
         [HttpPost]
+        [Route("create")]
         public void CreateEmployer(Employer employer)
         {
             employerService.Add(employer);
@@ -26,10 +27,11 @@ namespace EmployerStorageAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetFullInfo(Guid guid)
+        [Route("employer/{Id}")]
+        public async Task<IActionResult> GetFullInfo(Guid Id)
         {
              
-            var result = employerService.GetFullEmployerInfo(guid);
+            var result = employerService.GetFullEmployerInfo(Id);
             return Ok(result);
         }
     }

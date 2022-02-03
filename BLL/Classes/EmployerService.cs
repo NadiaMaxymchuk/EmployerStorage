@@ -14,11 +14,20 @@ namespace BLL.Classes
         {
             this.context = context; 
         }
+
+        public IEnumerable<Employer> GetAllEmployer()
+        {
+            throw new NotImplementedException();
+        }
+
         public Employer GetFullEmployerInfo(Guid Id)
         {
             return context.Employers.FirstOrDefault(x=>x.Id==Id);
         }
 
-
+        public void Update(Employer employer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

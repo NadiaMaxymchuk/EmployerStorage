@@ -8,5 +8,9 @@ namespace BLL.Interfaces
 {
     public interface ICompanyService: IBaseService<Company>
     {
+        public Company GetFullCompanyInfo(Guid Id);
+        public IEnumerable<Company> GetAllCompany();
+        public void UpdateCompany(Company company);
+
     }
 }

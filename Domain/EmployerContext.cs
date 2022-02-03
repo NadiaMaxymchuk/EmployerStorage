@@ -22,6 +22,9 @@ namespace Domain
 
         public DbSet<Company> Companies { get; set; }
 
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<ClientCompany> ClientCompanies { get; set; }   
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

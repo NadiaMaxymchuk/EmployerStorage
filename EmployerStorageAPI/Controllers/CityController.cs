@@ -16,7 +16,7 @@ namespace EmployerStorageAPI.Controllers
         }
 
         [HttpPost]
-        public void CreateCity(City city )
+        public void CreateCity(Domain.Models.City city )
         {
             cityService.Add(city);
 
