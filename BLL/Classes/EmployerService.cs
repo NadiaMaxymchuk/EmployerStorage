@@ -15,11 +15,7 @@ namespace BLL.Classes
             this.context = context; 
         }
 
-        public IEnumerable<Employer> GetAllEmployer()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public Employer GetFullEmployerInfo(Guid Id)
         {
             return context.Employers.FirstOrDefault(x=>x.Id==Id);

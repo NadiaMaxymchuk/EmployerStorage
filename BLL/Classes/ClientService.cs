@@ -15,20 +15,6 @@ namespace BLL.Classes
         {
             this.context = context;
         }
-        public Client GetFullClientInfo(Guid Id)
-        {
-            return context.Clients.FirstOrDefault(x => x.Id == Id);
-
-
-        }
-
-        public IEnumerable<Client> GetAllClient()
-        {
-            return context.Clients.ToList();
-        }
-        public void UpdateClient(Client client)
-        {
-            context.Clients.Update(client);
-        }
+        
     }
 }

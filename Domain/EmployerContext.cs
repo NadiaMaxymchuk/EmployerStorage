@@ -8,8 +8,8 @@ namespace Domain
         public EmployerContext(DbContextOptions<EmployerContext> options)
             : base(options)
         {
-            //Database.EnsureCreated();
-            Database.Migrate();
+            Database.EnsureCreated();
+            //Database.Migrate();
         }
 
         public DbSet<Employer> Employers { get; set; }

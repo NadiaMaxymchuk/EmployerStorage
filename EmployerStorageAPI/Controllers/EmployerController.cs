@@ -34,5 +34,24 @@ namespace EmployerStorageAPI.Controllers
             var result = employerService.GetFullEmployerInfo(Id);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("employers/{Id}")]
+        public async Task<IActionResult> GetEmployers()
+        {
+            var result = employerService.GetMany();
+            return Ok(result);
+             
+        }
+
+        [HttpDelete]
+        [Route("delete/{Id}")]
+        public async void DeleteEployer(Employer employer)
+        {
+            employerService.Remove(employer);
+            employerService.SaveChanges();
+        }
+
+
     }
 }

@@ -17,21 +17,7 @@ namespace BLL.Classes
         {
             this.context = context;
         }
-        public City GetFullCityInfo(Guid Id)
-        {
-            return context.Cities.FirstOrDefault(x => x.Id == Id);
-        }
-
-        public IEnumerable<City> GetAllCities()
-        {
-            return context.Cities.ToList();
-        }
-
-        public void Update(City city)
-        {
-            context.Cities.Update(city);
-        }
-
+        
 
     }
 }

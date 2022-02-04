@@ -8,8 +8,6 @@ namespace BLL.Interfaces
 {
     public interface ISkillService: IBaseService<Skill>
     {
-        public Skill GetFullSkillInfo(Guid Id);
-        public IEnumerable<Skill> GetAllSkill();
-        public void UpdateSkill(Skill skill);
+        
     }
 }

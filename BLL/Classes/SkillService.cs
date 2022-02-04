@@ -16,19 +16,6 @@ namespace BLL.Classes
 
         
 
-        public IEnumerable<Skill> GetAllSkill()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Skill GetFullSkillInfo(Guid Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateSkill(Skill skill)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
