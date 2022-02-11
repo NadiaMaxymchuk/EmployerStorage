@@ -9,15 +9,17 @@ using Token.Models;
 
 namespace Token.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class AcountController: Controller
     {
         private List<User> people = new List<User>
         {
-            new User {Login="admin@gmail.com", Password="12345", Role = "admin" },
-            new User { Login="qwerty@gmail.com", Password="55555", Role = "user" }
+            new User {Login="admin@gmail.com", Password="12345", UserRole = Role.Admin },
+            new User { Login="qwerty@gmail.com", Password="55555", UserRole =  Role.User }
         };
 
-        [HttpPost("/token")]
+        [HttpPost("token")]
         public IActionResult Token(string username, string password)
         {
             var identity = GetIdentity(username, password);
@@ -54,7 +56,7 @@ namespace Token.Controllers
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimsIdentity.DefaultNameClaimType, person.Login),
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, person.Role)
+                    new Claim(ClaimsIdentity.DefaultRoleClaimType, person.UserRole.ToString())
                 };
                 ClaimsIdentity claimsIdentity =
                 new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,

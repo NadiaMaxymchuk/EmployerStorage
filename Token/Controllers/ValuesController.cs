@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Token.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class ValuesController:Controller
     {
         [Authorize]
@@ -14,7 +14,7 @@ namespace Token.Controllers
             return Ok($"Login: {User.Identity.Name}");
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         [Route("getrole")]
         public IActionResult GetRole()
         {
