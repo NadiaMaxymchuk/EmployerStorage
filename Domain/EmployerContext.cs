@@ -22,6 +22,9 @@ namespace Domain
 
         public DbSet<Company> Companies { get; set; }
 
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<ClientCompany> ClientCompanies { get; set; }   
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,9 +35,38 @@ namespace Domain
                 .HasKey(x => x.Id);
 
             modelBuilder.Entity<Company>()
+                .HasKey(x=>x.Id);
+
+            modelBuilder.Entity<City>()
+                .HasKey(x=>x.Id);
+
+            modelBuilder.Entity<Client>()
+                .HasKey(x=>x.Id);
+
+            modelBuilder.Entity<Client>()
+                .HasMany(x => x.ClientCompanies)
+                .WithOne(x => x.Client)
+                .HasForeignKey(x => x.ClientId);
+
+            modelBuilder.Entity<Company>()
+                .HasMany(x => x.ClientCompanies)
+                .WithOne(x => x.Company)
+                .HasForeignKey(x => x.CompanyId);
+
+            modelBuilder.Entity<Company>()
                 .HasMany(x => x.Employers)
                 .WithOne(x=>x.Company)
                 .HasForeignKey(x => x.CompanyId);
+
+            modelBuilder.Entity<Employer>()
+                .HasMany(x=>x.EmployerSkills)
+                .WithOne(x=>x.Employer)
+                .HasForeignKey(x=>x.EmployerId);
+
+            modelBuilder.Entity<Skill>()
+                .HasMany(x => x.EmployerSkills)
+                .WithOne(x => x.Skill)
+                .HasForeignKey(x => x.SkillId);
 
             modelBuilder.Entity<City>()
                 .HasMany(x => x.Companies)
@@ -42,7 +74,9 @@ namespace Domain
                 .HasForeignKey(x => x.CityId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+
             modelBuilder.Entity<EmployerSkill>().HasKey(sc => new { sc.EmployerId, sc.SkillId });
+            modelBuilder.Entity<ClientCompany>().HasKey(sc => new { sc.CompanyId, sc.ClientId });
         }
 
     }

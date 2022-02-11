@@ -17,8 +17,8 @@ namespace Domain
 
         public Guid? CompanyId { get; set; }
 
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
-        public ICollection<EmployerSkill> EmployerSkills { get; set; }
+        public virtual ICollection<EmployerSkill> EmployerSkills { get; set; }
     }
 }
